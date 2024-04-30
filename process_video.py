@@ -3,7 +3,7 @@ from ultralytics import YOLO
 from threading import Thread
 import os
 import json
-
+import datetime
 
 def thread_safe_predict(video_path):
     # Load the YOLOv8 model
@@ -21,9 +21,10 @@ def thread_safe_predict(video_path):
     # Get video filename without extension
     video_name = os.path.splitext(os.path.basename(video_path))[0].split("-")[-1]
     file_name = video_name.split("_")[0]
+    date = datetime.datetime.now().strftime('%Y-%m-%d')
 
     # Create directory to save detections for this video
-    detection_dir = f"detections/{file_name}/{video_name}"
+    detection_dir = f"detections/{file_name}/{date}/{video_name}"
     os.makedirs(detection_dir, exist_ok=True)
 
     # Dictionary with info:
@@ -57,7 +58,7 @@ def thread_safe_predict(video_path):
                     detections.append(detection)
 
                 analysis_info[frame_number] = {
-                    "Filename": video_path,
+                    "Filename": video_name,
                     "Frame Number": frame_number,
                     "Frame Time (s)": frame_number / fps,
                     "Detections": detections
@@ -98,13 +99,28 @@ def process_videos_with_threading(video_paths):
     # Process each video in a separate thread
     threads = []
     for video_path in video_paths:
-        thread = Thread(target=lambda path: results_dict.update({path: thread_safe_predict(path)}), args=(video_path,))
+        video_name = os.path.splitext(os.path.basename(video_path))[0].split("-")[-1]
+        thread = Thread(target=lambda name, path: results_dict.update({name: thread_safe_predict(path)}),
+                        args=(video_name, video_path))
         thread.start()
         threads.append(thread)
 
     # Wait for all threads to complete
     for thread in threads:
         thread.join()
+
+    video_name = os.path.splitext(os.path.basename(video_paths[0]))[0].split("-")[-1]
+    file_name = video_name.split("_")[0]
+    date = datetime.datetime.now().strftime('%Y-%m-%d')
+
+    # Create directories if they don't exist
+    directory = f"detections/{file_name}/{date}/data/"
+    os.makedirs(directory, exist_ok=True)
+
+    # Save results as JSON
+    json_file_path = os.path.join(directory, f"{file_name}_{date}_results.json")
+    with open(json_file_path, "w") as json_file:
+        json.dump(results_dict, json_file)
 
     # Return the results dictionary
     return results_dict

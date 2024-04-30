@@ -165,3 +165,4 @@ weights/train18/args.yaml
 weights/train18/results.csv
 weights/train18/weights/last.pt
 *.yaml
+*.json

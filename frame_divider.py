@@ -75,8 +75,3 @@ def divide_video(video_path, num_parts):
 
     # Return the list of temporary video file paths
     return temp_video_files
-
-
-# Example usage:
-divided_video_paths = divide_video("videos/full/Antifragile.mp4", 4)
-print("Divided video paths:", divided_video_paths)
