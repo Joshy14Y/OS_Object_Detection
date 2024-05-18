@@ -39,8 +39,11 @@ def thread_safe_predict(video_path):
             # Increment frame number
             frame_number += 1
 
-            results = local_model.predict(source=frame, stream=False, save=False, imgsz=640, conf=0.75, half=True,
-                                          device="0", verbose=False)
+            # Con CPU
+            results = local_model.predict(source=frame, stream=False, save=False, imgsz=640, conf=0.75, half=True, verbose=False)
+
+            # Con GPU
+            # results = local_model.predict(source=frame, stream=False, save=False, imgsz=640, conf=0.75, half=True,device="0", verbose=False)
 
             names = results[0].names
             box = results[0].boxes.cpu()
