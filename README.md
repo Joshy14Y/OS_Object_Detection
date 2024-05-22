@@ -47,13 +47,15 @@ Carga datos de detección de objetos desde un archivo JSON, calcula estadística
 
 ## Resultados 
 Al realizar todo el proceso de la detección de actores:
+- Brad Pitt
+- Henry Cavill
 - Keanu Reeves
 - Ryan Gosling
+- Kim Chaewon
 
 Y objetos como: 
-- Cuchillos
-- Pistolas
-- Phone 
+- Armas de Fuego
+- Teléfonos 
 
 Los resultados demuestran el recuento de objetos detectados y la confianza media en cada detección, de lo contrario da estadísticas en blanco, lo que significa que no encontró nada. 
 | Resultado 1 | Resultado 2 | Resultado 3 |
@@ -101,17 +103,161 @@ Los resultados demuestran el recuento de objetos detectados y la confianza media
 ```git
 git clone https://github.com/Joshy14Y/OS_Object_Detection.git
 ```
-Y luego debe de ejecutar esta lista de comandos
-```cd
-git clone https://github.com/Joshy14Y/OS_Object_Detection.git
-```
-```cd
-git clone https://github.com/Joshy14Y/OS_Object_Detection.git
-```
-```cd
-git clone https://github.com/Joshy14Y/OS_Object_Detection.git
-```
-```cd
-git clone https://github.com/Joshy14Y/OS_Object_Detection.git
-```
+2) Crear un entorno de Conda con Python 3.11 e instalar las siguientes dependencias:
 
+Package                   Version
+------------------------- --------------------
+aiosignal                 1.3.1
+albumentations            1.4.7
+annotated-types           0.6.0
+anyio                     4.2.0
+argon2-cffi               21.3.0
+argon2-cffi-bindings      21.2.0
+asttokens                 2.0.5
+async-lru                 2.0.4
+attrs                     23.1.0
+Babel                     2.11.0
+beautifulsoup4            4.12.2
+bleach                    4.1.0
+Brotli                    1.0.9
+certifi                   2023.7.22
+cffi                      1.16.0
+chardet                   4.0.0
+charset-normalizer        2.0.4
+click                     8.1.7
+colorama                  0.4.6
+comm                      0.2.1
+contourpy                 1.2.1
+cycler                    0.10.0
+debugpy                   1.6.7
+decorator                 5.1.1
+defusedxml                0.7.1
+exceptiongroup            1.2.0
+executing                 0.8.3
+fastjsonschema            2.16.2
+filelock                  3.13.1
+fonttools                 4.51.0
+frozenlist                1.4.1
+fsspec                    2024.2.0
+idna                      2.10
+imageio                   2.34.1
+intel-openmp              2021.4.0
+ipykernel                 6.28.0
+ipython                   8.20.0
+ipywidgets                8.1.2
+jedi                      0.18.1
+Jinja2                    3.1.3
+joblib                    1.4.2
+json5                     0.9.6
+jsonschema                4.19.2
+jsonschema-specifications 2023.7.1
+jupyter                   1.0.0
+jupyter_client            8.6.0
+jupyter-console           6.6.3
+jupyter_core              5.5.0
+jupyter-events            0.8.0
+jupyter-lsp               2.2.0
+jupyter_server            2.10.0
+jupyter_server_terminals  0.4.4
+jupyterlab                4.0.11
+jupyterlab-pygments       0.1.2
+jupyterlab_server         2.25.1
+jupyterlab-widgets        3.0.10
+kiwisolver                1.4.5
+lazy_loader               0.4
+MarkupSafe                2.1.3
+matplotlib                3.8.4
+matplotlib-inline         0.1.6
+mistune                   2.0.4
+mkl                       2021.4.0
+mpmath                    1.3.0
+msgpack                   1.0.8
+nbclient                  0.8.0
+nbconvert                 7.10.0
+nbformat                  5.9.2
+nest-asyncio              1.6.0
+networkx                  3.2.1
+notebook                  7.0.8
+notebook_shim             0.2.3
+numpy                     1.26.3
+opencv-python             4.9.0.80
+opencv-python-headless    4.9.0.80
+overrides                 7.4.0
+packaging                 23.2
+pandas                    2.2.2
+pandocfilters             1.5.0
+parso                     0.8.3
+pillow                    10.2.0
+pip                       23.3.1
+platformdirs              3.10.0
+ply                       3.11
+prometheus-client         0.14.1
+prompt-toolkit            3.0.43
+protobuf                  5.26.1
+psutil                    5.9.0
+pure-eval                 0.2.2
+py-cpuinfo                9.0.0
+pycparser                 2.21
+pydantic                  2.7.1
+pydantic_core             2.18.2
+Pygments                  2.15.1
+pyparsing                 3.1.2
+PyQt5                     5.15.10
+PyQt5-sip                 12.13.0
+PySocks                   1.7.1
+python-dateutil           2.8.2
+python-dotenv             1.0.1
+python-json-logger        2.0.7
+python-magic              0.4.27
+pytz                      2024.1
+pywin32                   305.1
+pywinpty                  2.0.10
+PyYAML                    6.0.1
+pyzmq                     25.1.2
+qtconsole                 5.5.1
+QtPy                      2.4.1
+ray                       2.10.0
+referencing               0.30.2
+requests                  2.31.0
+requests-toolbelt         1.0.0
+rfc3339-validator         0.1.4
+rfc3986-validator         0.1.1
+roboflow                  1.1.28
+rpds-py                   0.10.6
+scikit-image              0.23.2
+scikit-learn              1.4.2
+scipy                     1.13.0
+seaborn                   0.13.2
+Send2Trash                1.8.2
+setuptools                68.2.2
+sip                       6.7.12
+six                       1.16.0
+sniffio                   1.3.0
+soupsieve                 2.5
+stack-data                0.2.0
+sympy                     1.12
+tbb                       2021.11.0
+terminado                 0.17.1
+thop                      0.1.1.post2209072238
+threadpoolctl             3.5.0
+tifffile                  2024.5.10
+tinycss2                  1.2.1
+tomli                     2.0.1
+torch                     2.3.0+cu121
+torchaudio                2.3.0+cu121
+torchvision               0.18.0+cu121
+tornado                   6.3.3
+tqdm                      4.66.2
+traitlets                 5.7.1
+typing_extensions         4.9.0
+tzdata                    2024.1
+ultralytics               8.2.4
+urllib3                   2.1.0
+wcwidth                   0.2.5
+webencodings              0.5.1
+websocket-client          0.58.0
+wheel                     0.41.2
+widgetsnbextension        4.0.10
+win-inet-pton             1.1.0
+
+3) Ejecutar el archivo main.py en el entorno conda creado.
