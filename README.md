@@ -11,6 +11,13 @@ con el propósito de identificar y cuantificar la presencia de personas y objeto
 tecnologías avanzadas de reconocimiento facial y de objetos y se basará en una arquitectura de procesamiento distribuido en la nube. 
 Esto permitirá manejar grandes volúmenes de datos visuales, garantizando un análisis rápido y preciso.
 
+## Multiprocesamiento
+
+El proyecto se centra en procesar grandes videos dividiéndolos en partes más pequeñas para facilitar el análisis. Para mejorar la eficiencia y reducir el tiempo de procesamiento, se emplea el multiprocesamiento, donde varias partes del video se procesan simultáneamente en diferentes hilos.
+
+Primero, el video grande se divide en segmentos más pequeños. Luego, cada uno de estos segmentos es asignado a un hilo separado para realizar la detección de objetos. Cada hilo trabaja en paralelo, procesando su segmento del video de manera independiente, identificando y clasificando objetos en cada cuadro del video.
+
+Los resultados de todos los hilos se recogen y consolidan en un archivo JSON. Finalmente, los datos recolectados se analizan y se visualizan en forma de gráficos, mostrando estadísticas como el número de objetos detectados y la confianza media en cada detección. Este enfoque de multiprocesamiento no solo mejora la eficiencia del sistema, sino que también permite manejar grandes volúmenes de datos de manera más efectiva.
 
 ## Arquitectura 
 La arquitectura del sistema se puede describir como una arquitectura monolítica que integra múltiples funcionalidades relacionadas con la división de videos, detección de objetos y visualización de estadísticas. 
@@ -39,7 +46,9 @@ Primero divide un video en varias partes iguales y guarda cada parte en un archi
 Carga datos de detección de objetos desde un archivo JSON, calcula estadísticas por clase y generales, y genera gráficos que muestran la cantidad de detecciones y la confianza media por clase. La función plot_general_stats toma las clases, los conteos y las medias de confianza, y guarda un gráfico de barras que muestra estas estadísticas. Además, crea directorios para guardar estos gráficos si no existen. La función plot_class_and_general_stats procesa el JSON para calcular estas estadísticas para cada video y para todos los videos en conjunto, llamando a plot_general_stats para generar y guardar los gráficos correspondientes.
 
 ## Resultados 
-Al realizar todo el proceso, los resultados demuestran el recuento y la confianza, de lo contrario da estadísticas en blanco, lo que significa que no encontró nada. 
+Al realizar todo el proceso de la detección de
+
+, los resultados demuestran el recuento y la confianza, de lo contrario da estadísticas en blanco, lo que significa que no encontró nada. 
 | Resultado 1 | Resultado 2 | Resultado 3 |
 |----------|----------|----------|
 | ![Imagen 1](https://res.cloudinary.com/dgm059qwp/image/upload/f_auto,q_auto/v1/SO/zt0f11cyuhnjppz8aeyf) | ![Imagen 2](https://res.cloudinary.com/dgm059qwp/image/upload/v1716334937/SO/kcjvkmoqrb9egtsotyi5.jpg) | ![Imagen 3](https://res.cloudinary.com/dgm059qwp/image/upload/v1716334937/SO/ipebmzxkita8ts6knvqq.jpg) |
